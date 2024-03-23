@@ -1,7 +1,5 @@
 package com.utcn.demo.repository;
 
-import com.utcn.demo.model.Role;
-
 public class UserDTO {
     private long cnp;
     private String username;

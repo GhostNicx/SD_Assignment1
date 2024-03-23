@@ -13,6 +13,7 @@ public class Person {
     @Column(name = "name")
     private String name;
 
+
     public Person(){};
 
     public Person(String cnp, String name){

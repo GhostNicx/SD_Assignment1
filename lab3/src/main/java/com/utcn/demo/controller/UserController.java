@@ -1,10 +1,12 @@
 package com.utcn.demo.controller;
 
+import com.utcn.demo.model.User;
 import com.utcn.demo.repository.UserDTO;
 import com.utcn.demo.service.UserService;
-import jakarta.persistence.Access;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -15,13 +17,27 @@ public class UserController {
 
     @PostMapping("/create")
     public void createUser(@RequestBody UserDTO userDTO){
-        userService.createUser(userDTO.getCnp(), userDTO.getUsername(),
-                userDTO.getPassword(), userDTO.getEmail(), userDTO.getRole());
+        userService.createUser(userDTO);
     }
 
     @DeleteMapping("/delete")
     public void deleteUser(@RequestBody long cnp){
         userService.deleteUser(cnp);
+    }
+    //update user
+    @PutMapping("/update")
+    public void updateUser(@RequestBody UserDTO userDTO){
+        userService.updateUser(userDTO);
+    }
+    //read users
+    @GetMapping("/getAll")
+    public List<User> retrieveUsers(){
+        return userService.retrieveUsers();
+    }
+    //retrieve user
+    @GetMapping("/get")
+    public User retrieveUser(@RequestBody long cnp){
+        return userService.retrieveUser(cnp);
     }
 
 }
