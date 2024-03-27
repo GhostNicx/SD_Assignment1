@@ -5,6 +5,7 @@ import com.utcn.demo.model.User;
 import com.utcn.demo.repository.QuestionCreateDTO;
 import com.utcn.demo.repository.QuestionRepository;
 import com.utcn.demo.repository.QuestionUpdateDTO;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,10 @@ public class QuestionService {
 
     public void deleteQuestion(Long id) {
         questionRepository.deleteById(id);
+    }
+    //delete all questions
+    public void deleteAllQuestions() {
+        questionRepository.deleteAll();
     }
     //updating question using questionUpdateDTO
     public void updateQuestion(QuestionUpdateDTO questionUpdateDTO) {

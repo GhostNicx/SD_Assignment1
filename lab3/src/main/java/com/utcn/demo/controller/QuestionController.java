@@ -46,4 +46,10 @@ public class QuestionController {
     public List<Question> retrieveQuestions() {
         return questionService.retrieveQuestions();
     }
+    //delete all questions
+    @DeleteMapping("/deleteAll")
+    public void deleteAllQuestions() {
+        questionService.deleteAllQuestions();
+    }
+
 }

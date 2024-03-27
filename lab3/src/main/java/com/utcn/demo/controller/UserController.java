@@ -20,8 +20,8 @@ public class UserController {
         userService.createUser(userDTO);
     }
 
-    @DeleteMapping("/delete")
-    public void deleteUser(@RequestBody long cnp){
+    @DeleteMapping("/delete/{cnp}")
+    public void deleteUser(@PathVariable long cnp){
         userService.deleteUser(cnp);
     }
     //update user
@@ -35,8 +35,8 @@ public class UserController {
         return userService.retrieveUsers();
     }
     //retrieve user
-    @GetMapping("/get")
-    public User retrieveUser(@RequestBody long cnp){
+    @GetMapping("/get/{cnp}")
+    public User retrieveUser(@PathVariable long cnp){
         return userService.retrieveUser(cnp);
     }
 

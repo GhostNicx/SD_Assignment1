@@ -5,9 +5,11 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+
 @Entity
-@Table(name = "questions")
-public class Question {
+@Table(name = "answers")
+public class Answer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
@@ -15,26 +17,26 @@ public class Question {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    @JsonIgnore
     private User author;
 
-    @Column(name = "title")
-    private String title;
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
 
-    @Column(name = "question")
-    private String question;
+    @Column(name = "answer")
+    private String answer;
 
     @Column(name = "creation_date")
     private Date creationDate;
 
-    public Question() {
+    public Answer() {
     }
 
-    public Question(long id, User author, String title, String question, Date creationDate) {
+    public Answer(long id, User author, Question question, String answer, Date creationDate) {
         this.id = id;
         this.author = author;
-        this.title = title;
         this.question = question;
+        this.answer = answer;
         this.creationDate = creationDate;
     }
 
@@ -54,20 +56,20 @@ public class Question {
         this.author = author;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getQuestion() {
+    public Question getQuestion() {
         return question;
     }
 
-    public void setQuestion(String question) {
+    public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     public Date getCreationDate() {
@@ -76,5 +78,16 @@ public class Question {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id=" + id +
+                ", author=" + author +
+                ", question=" + question +
+                ", answer='" + answer + '\'' +
+                ", creationDate='" + creationDate + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.utcn.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,7 +25,12 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Question> questions;
+
+    @OneToMany(mappedBy = "author")
+    @JsonIgnore
+    private List<Answer> answers;
 
     public User() {
     }
