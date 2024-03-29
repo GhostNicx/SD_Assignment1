@@ -40,7 +40,10 @@ public class QuestionService {
             question.setTitle(questionUpdateDTO.getTitle());
             question.setQuestion(questionUpdateDTO.getQuestion());
             questionRepository.save(question);
+        }else {
+            throw new IllegalArgumentException("Question with ID " + questionUpdateDTO.getQuestion_id() + " not found");
         }
+
     }
     public Question retrieveQuestion(Long id) {
         return questionRepository.findById(id).orElse(null);

@@ -42,6 +42,8 @@ public class AnswerService {
         if (answer != null) {
             answer.setAnswer(answerUpdateDTO.getAnswer());
             answerRepository.save(answer);
+        }else {
+            throw new IllegalArgumentException("Answer with ID " + answerUpdateDTO.getAnswerId() + " not found");
         }
     }
 

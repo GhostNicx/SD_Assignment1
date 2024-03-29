@@ -1,5 +1,6 @@
 package com.utcn.demo.controller;
 
+import com.utcn.demo.model.Answer;
 import com.utcn.demo.model.Question;
 import com.utcn.demo.model.User;
 import com.utcn.demo.repository.AnswerCreateDTO;
@@ -9,6 +10,8 @@ import com.utcn.demo.service.QuestionService;
 import com.utcn.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/answer")
@@ -43,13 +46,13 @@ public class AnswerController {
     }
 
     @GetMapping("/get/{id}")
-    public void retrieveAnswer(@PathVariable Long id) {
-        answerService.retrieveAnswer(id);
+    public Answer retrieveAnswer(@PathVariable Long id) {
+        return answerService.retrieveAnswer(id);
     }
 
     @GetMapping("/getAll")
-    public void retrieveAnswers() {
-        answerService.retrieveAnswers();
+    public List<Answer> retrieveAnswers() {
+        return answerService.retrieveAnswers();
     }
 
 }

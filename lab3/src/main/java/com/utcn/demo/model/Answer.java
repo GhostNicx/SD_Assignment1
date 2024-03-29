@@ -80,14 +80,4 @@ public class Answer {
         this.creationDate = creationDate;
     }
 
-    @Override
-    public String toString() {
-        return "Answer{" +
-                "id=" + id +
-                ", author=" + author +
-                ", question=" + question +
-                ", answer='" + answer + '\'' +
-                ", creationDate='" + creationDate + '\'' +
-                '}';
-    }
 }
